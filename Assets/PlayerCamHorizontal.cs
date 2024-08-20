@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerCam : MonoBehaviour
+public class PlayerCamHorizontal : MonoBehaviour
 {
     public float sensX;
     public float sensY;
+
+    float xRotation;
     float yRotation;
 
     private void Start()
@@ -22,8 +24,10 @@ public class PlayerCam : MonoBehaviour
 
         yRotation += mouseX;
 
+        xRotation -= mouseY;
+        xRotation = Mathf.Clamp(xRotation, -90f, 90f);
 
         // rotate cam and orientation
-        transform.rotation = Quaternion.Euler(0, yRotation, 0);
+        transform.rotation = Quaternion.Euler(xRotation, yRotation, 0);
     }
 }

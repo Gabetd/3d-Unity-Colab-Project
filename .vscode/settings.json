@@ -51,5 +51,5 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "Colab3DProject.sln"
+    "dotnet.defaultSolution": "3d-Unity-Colab-Project.sln"
 }
