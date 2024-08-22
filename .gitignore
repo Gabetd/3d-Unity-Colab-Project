@@ -8,3 +8,11 @@ Temp/FSTimeGet-df3745b6e6a4a6d4bb0a2bb166a74306
 /Packages
 /Temp
 /Library
+Library/ArtifactDB
+Library/ArtifactDB
+Library/Search/transactions.db
+Library/SourceAssetDB
+Logs/AssetImportWorker0.log
+Logs/AssetImportWorker1.log
+Logs/shadercompiler-AssetImportWorker0.log
+Logs/shadercompiler-UnityShaderCompiler.exe0.log
