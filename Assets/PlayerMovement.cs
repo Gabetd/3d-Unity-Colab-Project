@@ -19,7 +19,7 @@ public class PlayerMovement : MonoBehaviour
     Vector3 moveDirection;
     Rigidbody rb;
     public float weight;
-    public float Countdown;
+    float Countdown;
 
     // Start is called before the first frame update
     float adjustedMoveSpeed;
@@ -36,6 +36,7 @@ public class PlayerMovement : MonoBehaviour
             rb.AddForce(Vector3.up * 500f, ForceMode.Force);
         }
 
+
     }
     void dash()
     {
@@ -43,6 +44,9 @@ public class PlayerMovement : MonoBehaviour
         {
             rb.AddForce(Orientation.forward * 3000f, ForceMode.Force);
             Countdown += 3f;
+        }else if(Countdown > 0)
+        {
+            Countdown -= 1 * Time.deltaTime;
         }
 
     }
@@ -54,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void MovePlayer()
     {
-        adjustedMoveSpeed = moveSpeed * ( 180f / weight);
+        adjustedMoveSpeed = moveSpeed * (3 * ( 180f / weight));
         // Calculate move direction
         moveDirection = Orientation.forward * verticalInput + Orientation.right * horizontalInput;
         rb.AddForce(moveDirection.normalized * adjustedMoveSpeed * 1000f * Time.deltaTime, ForceMode.Force);
@@ -62,20 +66,9 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
 
 
-    void cooldownTimer()
-    {
 
-        if(Countdown > 0)
-        {
-        Countdown -= 1 * Time.deltaTime;
-        Console.Write("Countdown is currently ", Countdown);
-        }
-
-    }
     void Update()
     {
-
-        cooldownTimer();
         dash();
         jump();
         grounded = Physics.Raycast(transform.position, Vector3.down, PlayerHeight * 0.5f + 0.2f, whatIsGround);
@@ -84,11 +77,11 @@ public class PlayerMovement : MonoBehaviour
 
         if(grounded)
         {
-            rb.drag = groundDrag + (( 180f / weight) / 2) + 1;
+            rb.drag = groundDrag + 3 - (( weight / 180 ));
         }
         else
         {
-            rb.drag = 0;
+            rb.drag = 3;
         }
 
     }
